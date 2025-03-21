@@ -3,8 +3,9 @@ import { BASE_URL } from "../utilities/authUtils";
 import type { User } from "@supabase/supabase-js";
 
 type AuthResponse = {
-  user: User | null;
-  error: any;
+  user?: User | null;
+  error: Error | null;
+  url?: string;
 };
 
 export const signInWithEmail = async (
@@ -26,7 +27,11 @@ export const signInWithGoogle = async (): Promise<AuthResponse> => {
       scopes: "https://www.googleapis.com/auth/userinfo.email",
     },
   });
-  return { user: data?.user ?? null, error };
+
+  if (error) {
+    return { error };
+  }
+  return { url: data.url, error: null };
 };
 
 export const signUpWithEmail = async (

@@ -6,6 +6,7 @@ interface AuthState {
   user: User | null;
   setUser: (user: User | null) => void;
   initializeAuth: () => Promise<void>;
+  clearUser: () => void;
 }
 
 const useAuthStore = create<AuthState>((set) => ({
@@ -36,6 +37,11 @@ const useAuthStore = create<AuthState>((set) => ({
     } catch (error) {
       console.error("Error initializing auth:", error);
     }
+  },
+
+  clearUser: () => {
+    console.log("clearUser called");
+    set({ user: null });
   },
 }));
 
