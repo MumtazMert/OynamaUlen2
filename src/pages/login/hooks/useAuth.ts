@@ -4,6 +4,7 @@ import {
   signInWithEmail,
   signInWithGoogle,
   signUpWithEmail,
+  type AuthResponse, // authService.ts'den import et
 } from "../../../services/authService";
 import {
   setLoadingState,
@@ -20,7 +21,7 @@ export const useAuth = () => {
   const { setUser } = useAuthStore();
 
   const handleAuth = async (
-    authFn: () => Promise<{ user: any; error: any }>,
+    authFn: () => Promise<AuthResponse>,
     redirect = false
   ) => {
     setLoadingState(setLoading, setError, setSuccessMessage, true);

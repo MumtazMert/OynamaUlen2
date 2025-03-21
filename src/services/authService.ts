@@ -1,10 +1,11 @@
 import { supabase } from "../lib/supabase";
 import { BASE_URL } from "../utilities/authUtils";
 import type { User } from "@supabase/supabase-js";
+import { AuthError } from "@supabase/supabase-js";
 
-type AuthResponse = {
+export type AuthResponse = {
   user?: User | null;
-  error: Error | null;
+  error: AuthError | null;
   url?: string;
 };
 
