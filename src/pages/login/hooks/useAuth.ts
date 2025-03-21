@@ -4,7 +4,7 @@ import {
   signInWithEmail,
   signInWithGoogle,
   signUpWithEmail,
-  type AuthResponse, // authService.ts'den import et
+  type AuthResponse,
 } from "../../../services/authService";
 import {
   setLoadingState,
